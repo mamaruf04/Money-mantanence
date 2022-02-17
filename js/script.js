@@ -2,7 +2,6 @@
 function getInputToConvertFloat(inputId) {
     const input = document.getElementById(inputId);
     const inputValue = parseFloat(input.value);
-    console.log(inputValue);
     if(isNaN(inputValue)){
         // document.getElementById('negativeNum-error').style.display = "none";
         document.getElementById('string-error').style.display = "block";
@@ -84,4 +83,11 @@ document.getElementById('calculate-btn').addEventListener('click',function () {
     else{
         document.getElementById('expense-error').style.display = "block";
     }
+})
+
+// savings area
+
+document.getElementById('save-btn').addEventListener('click',function () {
+    const parsentageInput = getInputToConvertFloat("saving-persentage");
+    const totalIncome = getInputToConvertFloat("total-income");
 })

@@ -14,28 +14,36 @@
         <div>
             <img class="w-11/12 my-0 mx-auto rounded-lg h-full" src="img/digital-walet.jpg" alt=""> 
         </div>
-        <div class="text-center mx-auto p-1">
+        <div class="text-center mx-auto p-1 bg-neutral-100 rounded-lg">
             
             <!--------- income area -------->
             <h4 class="font-semibold text-2xl">Income</h4>
             <p class="inline text-xl font-medium">Income:</p>
             <input id="total-income" type="text" placeholder="Enter your income" class="bg-gray-200 py-2 px-4 mt-3 rounded-md text-xl w-9/12">
+            <p id="incomeField-error" class="text-red-600 hidden">**you didn't enter you income amount.</p>
             
             <!-------- Expenses area -------->
             <h4 class="font-semibold text-2xl m-3">Expenses</h4>
             <div>
                 <p class="inline text-xl font-medium">Food:</p>
                 <input id="expense-in-food" type="text" placeholder="Enter you expense in Food" class="bg-gray-200 py-2 px-4 m-2 rounded-md text-xl w-9/12">
+                <p id="foodField-error" class="text-red-600 hidden">**you didn't enter you food amount.</p>
             </div>
             <div>
                 <p class="inline text-xl font-medium">Rent:</p>
                 <input id="expense-in-rent" type="text" placeholder="Enter you expense in Rent" class="bg-gray-200 py-2 m-2 px-4 rounded-md text-xl w-9/12">
+                <p id="rentField-error" class="text-red-600 hidden">**you didn't enter you rent amount.</p>
             </div>
             <div>
                 <p class="inline text-xl font-medium">Cloth:</p>
-                <input id="expense-in-cloth" type="text" placeholder="Enter you expense in Cloth" class="bg-gray-200 py-2 px-4 mt-2 mb-6 rounded-md text-xl w-9/12">
+                <input id="expense-in-cloth" type="text" placeholder="Enter you expense in Cloth" class="bg-gray-200 py-2 px-4 mt-2 mb-2 rounded-md text-xl w-9/12">
+                <p id="clothField-error" class="text-red-600 hidden">**you didn't enter you cloth amount.</p>
             </div>
-            <button id="calculate-btn" class="px-8 py-2 rounded-lg bg-indigo-500 text-xl text-white font-medium">Calculate</button>
+            <button id="calculate-btn" class="px-8 py-2 mt-4 rounded-lg bg-indigo-500 text-xl text-white font-medium">Calculate</button>
+            <!-- negative number warning -->
+            <p id="negativeNum-error" class="text-red-600 hidden">**Negative number is not acceptable.</p>
+            <!-- string input warning -->
+            <p id="string-error" class="text-red-600 hidden">**please give a number.String is not acceptable.</p>
             
             <!--------- total -------->
             <h3 class="font-bold text-2xl mt-4 mb-3">Total Expenses: <span id="total-expense">0</span> </h3>

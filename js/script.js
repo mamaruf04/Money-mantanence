@@ -1,12 +1,21 @@
-// get inputfield number and convert it to float number
+// get inputfield number and convert it to float number and hendle error
 function getInputToConvertFloat(inputId) {
     const input = document.getElementById(inputId);
     const inputValue = parseFloat(input.value);
+    console.log(inputValue);
     if(isNaN(inputValue)){
-        console.log('please give a number');
+        document.getElementById('negativeNum-error').style.display = "none";
+        document.getElementById('string-error').style.display = "block";
+        return;
     }
     else if(inputValue < 0){
-        return "You can't input a negative number";
+        document.getElementById('negativeNum-error').style.display = "block";
+        document.getElementById('string-error').style.display = "none";
+        return;
+    }
+    else{
+        document.getElementById('negativeNum-error').style.display = "none";
+        document.getElementById('string-error').style.display = "none";
     }
     return inputValue;
 }
@@ -16,9 +25,43 @@ function InnerTextToFloat(textId) {
     const text = parseFloat(textid.innerText);
     return text;
 }
+// display hide or block
+function displayHideOrBlock(block,none1,none2) {
+        document.getElementById(block).style.display = "block";
+        document.getElementById(none1).style.display = "none";
+        document.getElementById(none2).style.display = "none";
+        return false;
+}
+// all input validation check
+function validateAllInput() {
+    const income = document.getElementById("total-income").value;
+    const food = document.getElementById("expense-in-food").value;
+    const rent = document.getElementById("expense-in-rent").value;
+    const cloth = document.getElementById("expense-in-cloth").value;
+    if (income == null || income == "") {
+      document.getElementById('incomeField-error').style.display = "block";
+      return false;
+    }
+    else if (food == null || food == ""){
+        displayHideOrBlock('foodField-error','incomeField-error','rentField-error');
+    }
+    else if( rent == null || rent == ""){
+        displayHideOrBlock('rentField-error','foodField-error','incomeField-error');
+    }
+    else if( cloth == null || cloth == ""){
+        displayHideOrBlock('clothField-error','rentField-error','incomeField-error');
+    }
+    else{
+        document.getElementById('clothField-error').style.display = "none";
+        document.getElementById('rentField-error').style.display = "none";
+        document.getElementById('foodField-error').style.display = "none";
+        document.getElementById('incomeField-error').style.display = "none";
+    }
+}
 
 // calculate button
 document.getElementById('calculate-btn').addEventListener('click',function () {
+    validateAllInput();
     const income = getInputToConvertFloat('total-income');
     // expenses
     const foodExpenses = getInputToConvertFloat('expense-in-food');
@@ -30,12 +73,14 @@ document.getElementById('calculate-btn').addEventListener('click',function () {
 
     // total balance
     const totalBalance = income - totalExpense;
-
-    if(income < totalExpense){
-        document.getElementById('total-expense').innerText = totalExpense;
-        document.getElementById('total-balance').innerText = totalBalance;
+    if(income >= totalExpense){
+        if(totalBalance >= 0 && totalExpense >= 0){
+            document.getElementById('total-expense').innerText = totalExpense;
+            document.getElementById('total-balance').innerText = totalBalance;
+        return;
+        }
     }
     else{
-        console.log("you can't expense more then your income")
+        console.log("you can't expense more then your income");
     }
 })

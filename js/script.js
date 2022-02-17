@@ -4,7 +4,7 @@ function getInputToConvertFloat(inputId) {
     const inputValue = parseFloat(input.value);
     console.log(inputValue);
     if(isNaN(inputValue)){
-        document.getElementById('negativeNum-error').style.display = "none";
+        // document.getElementById('negativeNum-error').style.display = "none";
         document.getElementById('string-error').style.display = "block";
         return;
     }
@@ -26,10 +26,11 @@ function InnerTextToFloat(textId) {
     return text;
 }
 // display hide or block
-function displayHideOrBlock(block,none1,none2) {
+function displayHideOrBlock(block,none1,none2,none3) {
         document.getElementById(block).style.display = "block";
         document.getElementById(none1).style.display = "none";
         document.getElementById(none2).style.display = "none";
+        document.getElementById(none3).style.display = "none";
         return false;
 }
 // all input validation check
@@ -39,17 +40,16 @@ function validateAllInput() {
     const rent = document.getElementById("expense-in-rent").value;
     const cloth = document.getElementById("expense-in-cloth").value;
     if (income == null || income == "") {
-      document.getElementById('incomeField-error').style.display = "block";
-      return false;
+        displayHideOrBlock('incomeField-error','foodField-error','rentField-error','clothField-error');
     }
     else if (food == null || food == ""){
-        displayHideOrBlock('foodField-error','incomeField-error','rentField-error');
+        displayHideOrBlock('foodField-error','incomeField-error','rentField-error','clothField-error');
     }
     else if( rent == null || rent == ""){
-        displayHideOrBlock('rentField-error','foodField-error','incomeField-error');
+        displayHideOrBlock('rentField-error','foodField-error','incomeField-error','clothField-error');
     }
     else if( cloth == null || cloth == ""){
-        displayHideOrBlock('clothField-error','rentField-error','incomeField-error');
+        displayHideOrBlock('clothField-error','rentField-error','incomeField-error','foodField-error');
     }
     else{
         document.getElementById('clothField-error').style.display = "none";
@@ -77,10 +77,11 @@ document.getElementById('calculate-btn').addEventListener('click',function () {
         if(totalBalance >= 0 && totalExpense >= 0){
             document.getElementById('total-expense').innerText = totalExpense;
             document.getElementById('total-balance').innerText = totalBalance;
+            document.getElementById('expense-error').style.display = "none";
         return;
         }
     }
     else{
-        console.log("you can't expense more then your income");
+        document.getElementById('expense-error').style.display = "block";
     }
 })

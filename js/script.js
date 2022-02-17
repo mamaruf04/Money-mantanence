@@ -87,7 +87,13 @@ document.getElementById('calculate-btn').addEventListener('click',function () {
 
 // savings area
 
-document.getElementById('save-btn').addEventListener('click',function () {
+document.getElementById('save-btn').addEventListener('click', function() {
     const parsentageInput = getInputToConvertFloat("saving-persentage");
     const totalIncome = getInputToConvertFloat("total-income");
-})
+    const savingAmount = InnerTextToFloat('saving-amount');
+    const multiflication = parsentageInput/100;
+    const totalSaving = savingAmount*multiflication;
+    if(totalSaving < totalIncome){
+      document.getElementById('savingAmount').innerText = totalSaving;
+    }
+  })

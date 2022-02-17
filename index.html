@@ -15,36 +15,42 @@
             <img class="w-11/12 my-0 mx-auto rounded-lg h-full" src="img/digital-walet.jpg" alt=""> 
         </div>
         <div class="text-center mx-auto p-1">
-            <!-- income area-->
+            
+            <!--------- income area -------->
             <h4 class="font-semibold text-2xl">Income</h4>
             <p class="inline text-xl font-medium">Income:</p>
-            <input type="text" class="bg-gray-200 py-2 px-4 mt-3 rounded-md text-xl font-medium w-9/12">
-            <!-- Expenses area -->
+            <input id="total-income" type="text" placeholder="Enter your income" class="bg-gray-200 py-2 px-4 mt-3 rounded-md text-xl w-9/12">
+            
+            <!-------- Expenses area -------->
             <h4 class="font-semibold text-2xl m-3">Expenses</h4>
             <div>
                 <p class="inline text-xl font-medium">Food:</p>
-                <input type="text" class="bg-gray-200 py-2 px-4 m-2 rounded-md text-xl font-medium w-9/12">
+                <input id="expense-in-food" type="text" placeholder="Enter you expense in Food" class="bg-gray-200 py-2 px-4 m-2 rounded-md text-xl w-9/12">
             </div>
             <div>
                 <p class="inline text-xl font-medium">Rent:</p>
-                <input type="text" class="bg-gray-200 py-2 m-2 px-4 rounded-md text-xl font-medium w-9/12">
+                <input id="expense-in-rent" type="text" placeholder="Enter you expense in Rent" class="bg-gray-200 py-2 m-2 px-4 rounded-md text-xl w-9/12">
             </div>
             <div>
                 <p class="inline text-xl font-medium">Cloth:</p>
-                <input type="text" class="bg-gray-200 py-2 px-4 mt-2 mb-6 rounded-md text-xl font-medium w-9/12">
+                <input id="expense-in-cloth" type="text" placeholder="Enter you expense in Cloth" class="bg-gray-200 py-2 px-4 mt-2 mb-6 rounded-md text-xl w-9/12">
             </div>
-            <button class="px-8 py-2 rounded-lg bg-indigo-500 text-xl text-white font-medium">Calculate</button>
-            <!-- total -->
-            <h3 class="font-bold text-2xl mt-4 mb-3">Total Expenses: <span>5500</span> </h3>
-            <h3 class="font-bold text-2xl mt-3 mb-2">Balance: <span>4500</span></h3>
-            <!-- saving area -->
+            <button id="calculate-btn" class="px-8 py-2 rounded-lg bg-indigo-500 text-xl text-white font-medium">Calculate</button>
+            
+            <!--------- total -------->
+            <h3 class="font-bold text-2xl mt-4 mb-3">Total Expenses: <span id="total-expense">0</span> </h3>
+            <h3 class="font-bold text-2xl mt-3 mb-2">Balance: <span id="total-balance">0</span></h3>
+            
+            <!-------- saving area --------->
             <p class="inline text-xl font-medium mt-3">Save:</p>
-            <input type="text" class="bg-gray-200 py-2 px-4 mt-2 mb-3 rounded-md text-xl font-medium w-1/3"><span class="mx-3 font-semibold">%</span>
-            <button class="px-6 py-2 rounded-lg bg-indigo-500 text-xl text-white font-medium">Save</button>
-            <!-- Summary -->
-            <h3 class="font-bold text-2xl mt-3 mb-2">Saving Amount: <span>2000</span> </h3>
-            <h3 class="font-bold text-2xl mt-3 mb-6">Remaining Balance: <span>2500</span> </h3>
+            <input id="saving-persentage" type="text" value="500" class="bg-gray-200 py-2 px-4 mt-2 mb-3 rounded-md text-xl font-medium w-1/3"><span class="mx-3 font-semibold">%</span>
+            <button id="save-btn" class="px-6 py-2 rounded-lg bg-indigo-500 text-xl text-white font-medium">Save</button>
+            
+            <!--------- Summary ------->
+            <h3 class="font-bold text-2xl mt-3 mb-2">Saving Amount: <span id="saving-amount">2000</span> </h3>
+            <h3 class="font-bold text-2xl mt-3 mb-6">Remaining Balance: <span id="remaining-balance">2500</span></h3>
         </div>
     </section>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -88,12 +88,23 @@ document.getElementById('calculate-btn').addEventListener('click',function () {
 // savings area
 
 document.getElementById('save-btn').addEventListener('click', function() {
+    validateAllInput();
     const parsentageInput = getInputToConvertFloat("saving-persentage");
     const totalIncome = getInputToConvertFloat("total-income");
-    const savingAmount = InnerTextToFloat('saving-amount');
     const multiflication = parsentageInput/100;
-    const totalSaving = savingAmount*multiflication;
-    if(totalSaving < totalIncome){
-      document.getElementById('savingAmount').innerText = totalSaving;
+    const totalSaving = totalIncome*multiflication;
+    if(totalSaving > totalIncome){
+        document.getElementById('great-saving-error').style.display = "block";
+        document.getElementById('nan-saving-error').style.display = "none";
     }
-  })
+    else{
+        document.getElementById('saving-amount').innerText = totalSaving;
+        document.getElementById('great-saving-error').style.display = "none";
+        document.getElementById('nan-saving-error').style.display = "none";
+    }
+    const totalBalance = document.getElementById('total-balance').innerText;
+    const remainingBalance = totalBalance - totalSaving;
+    if(remainingBalance >= 0 ){
+        document.getElementById('remaining-balance').innerText = remainingBalance;
+    }
+})
